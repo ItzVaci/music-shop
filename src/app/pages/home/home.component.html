@@ -1,0 +1,37 @@
+<div class="home-container">
+  <div class="hero">
+    <h1>Welcome to Music Instrument Marketplace</h1>
+    <p>Discover and purchase quality musical instruments</p>
+    <div class="search-bar">
+      <input
+        type="text"
+        [(ngModel)]="searchTerm"
+        (input)="onSearchChange(searchTerm)"
+        placeholder="🔍 Search instruments, categories..."
+        class="search-input"
+      />
+    </div>
+  </div>
+
+  <div class="content-wrapper">
+    <aside class="sidebar">
+      <app-filter-panel (filtersChanged)="onFiltersChanged($event)"></app-filter-panel>
+    </aside>
+
+    <main class="products-section">
+      <div *ngIf="loading" class="loading">Loading products...</div>
+      <div *ngIf="error" class="error">{{ error }}</div>
+
+      <div *ngIf="!loading && filteredProducts.length === 0" class="no-products">
+        No products found. Make sure json-server is running with sample data.
+      </div>
+
+      <div class="products-grid" *ngIf="!loading && filteredProducts.length > 0">
+        <app-product-card
+          *ngFor="let product of filteredProducts"
+          [product]="product"
+        ></app-product-card>
+      </div>
+    </main>
+  </div>
+</div>

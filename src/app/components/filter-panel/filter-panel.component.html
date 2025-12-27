@@ -1,0 +1,39 @@
+<div class="filter-panel">
+  <h3>Filters</h3>
+
+  <div class="filter-section">
+    <h4>Category</h4>
+    <div class="filter-options">
+      <label *ngFor="let category of categories">
+        <input
+          type="checkbox"
+          [checked]="selectedCategory === category"
+          (change)="onCategoryChange(category)"
+        />
+        {{ category }}
+      </label>
+    </div>
+  </div>
+
+  <div class="filter-section">
+    <h4>Condition</h4>
+    <div class="filter-options">
+      <label *ngFor="let condition of conditions">
+        <input
+          type="checkbox"
+          [checked]="selectedCondition === condition"
+          (change)="onConditionChange(condition)"
+        />
+        {{ condition }}
+      </label>
+    </div>
+  </div>
+
+  <div class="filter-section">
+    <h4>Price Range</h4>
+    <div class="price-inputs">
+      <input type="number" [(ngModel)]="minPrice" (change)="onPriceChange()" placeholder="Min" />
+      <input type="number" [(ngModel)]="maxPrice" (change)="onPriceChange()" placeholder="Max" />
+    </div>
+  </div>
+</div>

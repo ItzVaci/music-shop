@@ -1,0 +1,25 @@
+<div class="product-card">
+  <div class="product-image">
+    <img [src]="product.image" [alt]="product.name" (error)="onImageError($event)" class="product-img" />
+    <span class="condition-badge">{{ product.condition }}</span>
+    <button class="favorite-btn" (click)="toggleFavorite()" [class.active]="isFavorite">
+      {{ isFavorite ? '❤️' : '🤍' }}
+    </button>
+  </div>
+  <div class="product-info">
+    <h3 class="product-name">{{ product.name }}</h3>
+    <p class="product-category">{{ product.category }}</p>
+    <div class="rating">
+      <span class="stars">⭐ {{ product.rating }}</span>
+      <span class="reviews">({{ product.reviews }} reviews)</span>
+    </div>
+    <p class="product-description">{{ product.description | slice:0:80 }}...</p>
+    <div class="product-footer">
+      <span class="price">${{ product.price }}</span>
+      <div class="actions">
+        <button (click)="addToCart()" class="btn-cart">Add to Cart</button>
+        <a [routerLink]="['/product', product.id]" class="btn-view">View</a>
+      </div>
+    </div>
+  </div>
+</div>

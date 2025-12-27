@@ -1,0 +1,92 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Fender Stratocaster",
+      "category": "Guitar",
+      "price": 799.99,
+      "description": "Classic electric guitar with versatile tone. Perfect for beginners and professionals alike. Features solid body construction and smooth fretboard.",
+      "image": "https://images.pexels.com/photos/3428498/pexels-photo-3428498.jpeg?w=400&h=400&fit=crop",
+      "condition": "New",
+      "rating": 4.8,
+      "reviews": 256
+    },
+    {
+      "id": 2,
+      "name": "Yamaha Grand Piano",
+      "category": "Piano",
+      "price": 5999.99,
+      "description": "Premium grand piano with 88 weighted keys. Exceptional sound quality and durability. Ideal for studios and concert halls.",
+      "image": "https://images.pexels.com/photos/2378209/pexels-photo-2378209.jpeg?w=400&h=400&fit=crop",
+      "condition": "New",
+      "rating": 4.9,
+      "reviews": 89
+    },
+    {
+      "id": 3,
+      "name": "Ludwig Drum Kit",
+      "category": "Drums",
+      "price": 1299.99,
+      "description": "Professional 5-piece drum kit. Includes snare, toms, kick drum, and hardware. Great for gigging musicians.",
+      "image": "https://images.pexels.com/photos/8198158/pexels-photo-8198158.jpeg?w=400&h=400&fit=crop",
+      "condition": "Like New",
+      "rating": 4.7,
+      "reviews": 142
+    },
+    {
+      "id": 4,
+      "name": "Stradivarius Violin",
+      "category": "Violin",
+      "price": 8999.99,
+      "description": "High-quality student violin with excellent projection. Hand-crafted by master luthiers. Perfect for serious students.",
+      "image": "https://images.pexels.com/photos/34221/violin-musical-instrument-music-sound.jpg?w=400&h=400&fit=crop",
+      "condition": "New",
+      "rating": 4.6,
+      "reviews": 67
+    },
+    {
+      "id": 5,
+      "name": "Flute Yamaha YFL-222",
+      "category": "Flute",
+      "price": 349.99,
+      "description": "Beginner flute with closed hole keys. Produces clear, bright tones. Perfect for learning music.",
+      "image": "https://images.pexels.com/photos/221563/pexels-photo-221563.jpeg?w=400&h=400&fit=crop",
+      "condition": "New",
+      "rating": 4.5,
+      "reviews": 198
+    },
+    {
+      "id": 6,
+      "name": "Yamaha Trumpet YTR-2330",
+      "category": "Trumpet",
+      "price": 599.99,
+      "description": "Professional-quality trumpet. Bright, projecting tone. Excellent for orchestras and jazz.",
+      "image": "https://images.pexels.com/photos/3357078/pexels-photo-3357078.jpeg?w=400&h=400&fit=crop",
+      "condition": "New",
+      "rating": 4.7,
+      "reviews": 124
+    },
+    {
+      "id": 7,
+      "name": "Fender Jazz Bass",
+      "category": "Bass",
+      "price": 899.99,
+      "description": "Iconic jazz bass with warm, punchy tone. Perfect for session and touring musicians.",
+      "image": "https://images.pexels.com/photos/164936/pexels-photo-164936.jpeg?w=400&h=400&fit=crop",
+      "condition": "Good",
+      "rating": 4.6,
+      "reviews": 87
+    },
+    {
+      "id": 8,
+      "name": "Gibson Les Paul",
+      "category": "Guitar",
+      "price": 1299.99,
+      "description": "Legendary solid-body electric guitar. Rich, powerful tone. Favored by rock and blues musicians.",
+      "image": "https://images.pexels.com/photos/30672297/pexels-photo-30672297.jpeg?w=400&h=400&fit=crop",
+      "condition": "Like New",
+      "rating": 4.9,
+      "reviews": 312
+    }
+  ]
+}

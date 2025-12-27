@@ -1,0 +1,48 @@
+<div class="listings-container">
+  <h1>📋 My Listings</h1>
+
+  <div class="actions">
+    <a routerLink="/sell" class="btn-sell">+ List New Instrument</a>
+  </div>
+
+  <div *ngIf="loading" class="loading">Loading your listings...</div>
+
+  <div *ngIf="!loading && listings.length === 0" class="empty-listings">
+    <p>You haven't listed any instruments yet.</p>
+    <a routerLink="/sell" class="btn-get-started">Get Started Selling</a>
+  </div>
+
+  <div *ngIf="!loading && listings.length > 0" class="listings-grid">
+    <div *ngFor="let listing of listings" class="listing-card">
+      <div class="listing-image">
+        <img [src]="listing.image" [alt]="listing.name" />
+        <span class="condition-badge">{{ listing.condition }}</span>
+      </div>
+
+      <div class="listing-info">
+        <h3 class="listing-name">{{ listing.name }}</h3>
+        <p class="listing-category">{{ listing.category }}</p>
+
+        <div class="listing-details">
+          <span class="price">${{ listing.price }}</span>
+          <span class="date">Listed: {{ getFormattedDate(listing.listedDate) }}</span>
+        </div>
+
+        <p class="listing-description">{{ listing.description | slice:0:100 }}...</p>
+
+        <div class="rating">
+          <span class="stars">⭐ {{ listing.rating }}</span>
+          <span class="reviews">({{ listing.reviews }} reviews)</span>
+        </div>
+
+        <div class="actions">
+          <button (click)="removeListing(listing.id)" class="btn-remove">
+            Remove Listing
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a routerLink="/" class="back-link">← Back to Home</a>
+</div>

@@ -1,0 +1,30 @@
+<header class="header">
+  <nav class="navbar">
+    <a routerLink="/" class="logo">🎵 Music Marketplace</a>
+    <div class="nav-links">
+      <a routerLink="/" class="nav-link">Home</a>
+      <a routerLink="/cart" class="nav-link cart-link">
+        🛒 Cart ({{ cartCount }})
+      </a>
+
+      <div class="auth-section" *ngIf="!currentUser" class="auth-buttons">
+        <a routerLink="/login" class="nav-link btn-login">Login</a>
+        <a routerLink="/signup" class="nav-link btn-signup">Sign Up</a>
+      </div>
+
+      <div class="user-menu" *ngIf="currentUser">
+        <a routerLink="/sell" class="nav-link btn-sell">💰 Sell</a>
+        <a routerLink="/my-listings" class="nav-link btn-listings">📋 My Listings</a>
+        <button class="user-button" (click)="toggleUserMenu()">
+          👤 {{ currentUser.name }}
+        </button>
+        <div class="dropdown" *ngIf="showUserMenu">
+          <a routerLink="/my-listings" class="dropdown-item">My Listings</a>
+          <a routerLink="/sell" class="dropdown-item">Sell Instrument</a>
+          <hr />
+          <button class="dropdown-item logout" (click)="logout()">Logout</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>

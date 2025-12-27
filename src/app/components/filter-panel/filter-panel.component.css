@@ -1,0 +1,85 @@
+.filter-panel {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 100px;
+  max-width: 250px;
+}
+
+.filter-panel h3 {
+  margin: 0 0 1.5rem 0;
+  color: #333;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.filter-section {
+  margin-bottom: 1.5rem;
+}
+
+.filter-section h4 {
+  margin: 0 0 0.75rem 0;
+  color: #666;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.filter-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.filter-options label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #555;
+  transition: color 0.3s;
+}
+
+.filter-options label:hover {
+  color: #667eea;
+}
+
+.filter-options input[type="checkbox"] {
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+}
+
+.price-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.price-inputs input {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  width: 100%;
+}
+
+.price-inputs input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.price-inputs input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+  .filter-panel {
+    position: static;
+  }
+}
