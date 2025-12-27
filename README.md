@@ -18,6 +18,23 @@ This repository represents a **complete frontend project**, suitable for academi
 
 ---
 
+## 🎯 Project Goal
+
+The goal of this project is to **design and implement a complete frontend e‑commerce application** using Angular, following real‑world development practices.
+
+Specifically, the project aims to:
+
+* Demonstrate understanding of **Angular fundamentals** (components, services, routing)
+* Apply **TypeScript** for scalable and maintainable code
+* Implement **state management** using RxJS without external libraries
+* Simulate a real online shop experience (browsing, filtering, cart management)
+* Build a **responsive and user‑friendly UI** suitable for desktop and mobile
+* Integrate with a **mock REST API** to handle asynchronous data
+
+This project is intended for **academic evaluation**, **portfolio presentation**, and as a **foundation for a full‑stack application**.
+
+---
+
 ## 🚀 Features
 
 ### Core Functionality
@@ -60,7 +77,40 @@ This repository represents a **complete frontend project**, suitable for academi
 
 ## 📁 Project Structure
 
+The project follows Angular best practices by separating **components**, **pages**, and **services** to ensure maintainability and scalability.
+
 ```
+src/
+├── app/                     # Main application source
+│   ├── components/          # Reusable UI components
+│   │   ├── header/           # Navigation bar and cart indicator
+│   │   ├── footer/           # Application footer
+│   │   ├── product-card/     # Product preview card component
+│   │   └── filter-panel/     # Filtering UI (category, price, condition)
+│   │
+│   ├── pages/               # Route-based pages
+│   │   ├── home/             # Product listing and filters
+│   │   ├── product-detail/   # Individual product details page
+│   │   └── cart/             # Shopping cart page
+│   │
+│   ├── services/            # Business logic & state management
+│   │   ├── product.service.ts # Handles product data & API calls
+│   │   └── cart.service.ts    # Manages cart state using RxJS
+│   │
+│   ├── app.component.ts     # Root component
+│   ├── app.config.ts        # Application-wide configuration
+│   └── app.routes.ts        # Client-side routing configuration
+│
+├── assets/                  # Images and static assets
+├── index.html               # Main HTML entry point
+├── main.ts                  # Application bootstrap
+└── styles.css               # Global styles
+```
+
+Each folder has a clear responsibility, making the project easy to understand, extend, and maintain.
+
+---
+
 src/
 ├── app/
 │   ├── components/
@@ -82,7 +132,8 @@ src/
 ├── index.html
 ├── main.ts
 └── styles.css
-```
+
+````
 
 ---
 
@@ -90,15 +141,14 @@ src/
 
 Ensure the following tools are installed before running the project:
 
-* **Node.js** v18 or higher
-* **npm** (comes with Node.js) or **yarn**
-* **Angular CLI** (optional but recommended)
+- **Node.js** v18 or higher
+- **npm** (comes with Node.js) or **yarn**
+- **Angular CLI** (optional but recommended)
 
 Install Angular CLI globally if needed:
-
 ```bash
 npm install -g @angular/cli
-```
+````
 
 ---
 
@@ -290,7 +340,7 @@ dist/
 * Angular:
 
 ```bash
-ng serve 
+ng serve --port 4201
 ```
 
 * json‑server:
@@ -316,13 +366,13 @@ json-server --watch db.json --port 3001
 
 ## 📄 License
 
-This project is licensed under the **MIT License**.
+This project is licensed under the **UACS License**.
 
 ---
 
 ## 👨‍💻 Author
 
 **Music Shop Team**
-School Project – 2025
+Vlatko Angelov – 2025
 
-
+---
