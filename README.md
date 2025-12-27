@@ -4,17 +4,6 @@ A **full‑featured, modern music instrument marketplace** built with **Angular 
 
 This repository represents a **complete frontend project**, suitable for academic submission, portfolio presentation, or as a foundation for a production‑ready application.
 
----
-
-## 📸 Preview
-
-> *Add screenshots or a demo GIF here to showcase the UI (Home, Product Details, Cart, Mobile View).*
-> Example:
-
-```
-/assets/screenshots/home.png
-/assets/screenshots/cart.png
-```
 
 ---
 
@@ -80,62 +69,51 @@ This project is intended for **academic evaluation**, **portfolio presentation**
 The project follows Angular best practices by separating **components**, **pages**, and **services** to ensure maintainability and scalability.
 
 ```
-src/
-├── app/                     # Main application source
-│   ├── components/          # Reusable UI components
-│   │   ├── header/           # Navigation bar and cart indicator
-│   │   ├── footer/           # Application footer
-│   │   ├── product-card/     # Product preview card component
-│   │   └── filter-panel/     # Filtering UI (category, price, condition)
+MUSIC-SHOP/
+├── 📂 src/                          # Source code
+│   ├── 📂 app/                      # Main application module
+│   │   ├── 📂 components/           # Reusable UI components
+│   │   │   ├── filter-panel/       # Product filtering component
+│   │   │   ├── footer/             # Application footer
+│   │   │   ├── header/             # Navigation header
+│   │   │   └── product-card/       # Product display card
+│   │   │
+│   │   ├── 📂 pages/               # Route-based page components
+│   │   │   ├── cart/              # Shopping cart management
+│   │   │   ├── home/              # Landing page
+│   │   │   ├── login/             # User authentication
+│   │   │   ├── my-listings/       # User's product listings
+│   │   │   ├── product-detail/    # Detailed product view
+│   │   │   ├── sell/              # Create new listings
+│   │   │   └── signup/            # User registration
+│   │   │
+│   │   ├── 📂 services/            # Business logic and API calls
+│   │   │
+│   │   ├── app.component.css      # Root component styles
+│   │   ├── app.component.html     # Root component template
+│   │   ├── app.component.ts       # Root component logic
+│   │   ├── app.config.ts          # Application configuration
+│   │   └── app.routes.ts          # Route definitions
 │   │
-│   ├── pages/               # Route-based pages
-│   │   ├── home/             # Product listing and filters
-│   │   ├── product-detail/   # Individual product details page
-│   │   └── cart/             # Shopping cart page
-│   │
-│   ├── services/            # Business logic & state management
-│   │   ├── product.service.ts # Handles product data & API calls
-│   │   └── cart.service.ts    # Manages cart state using RxJS
-│   │
-│   ├── app.component.ts     # Root component
-│   ├── app.config.ts        # Application-wide configuration
-│   └── app.routes.ts        # Client-side routing configuration
+│   ├── 📂 assets/                  # Static assets (images, fonts, etc.)
+│   ├── index.html                 # Main HTML entry point
+│   ├── main.ts                    # Application bootstrap
+│   └── styles.css                 # Global styles
 │
-├── assets/                  # Images and static assets
-├── index.html               # Main HTML entry point
-├── main.ts                  # Application bootstrap
-└── styles.css               # Global styles
-```
-
-Each folder has a clear responsibility, making the project easy to understand, extend, and maintain.
-
----
-
-src/
-├── app/
-│   ├── components/
-│   │   ├── header/
-│   │   ├── footer/
-│   │   ├── product-card/
-│   │   └── filter-panel/
-│   ├── pages/
-│   │   ├── home/
-│   │   ├── product-detail/
-│   │   └── cart/
-│   ├── services/
-│   │   ├── product.service.ts
-│   │   └── cart.service.ts
-│   ├── app.component.ts
-│   ├── app.config.ts
-│   └── app.routes.ts
-├── assets/
-├── index.html
-├── main.ts
-└── styles.css
-
-````
+├── 📂 node_modules/               # NPM dependencies
+├── .gitignore                     # Git ignore rules
+├── angular.json                   # Angular CLI configuration
+├── db.json                        # Mock database (JSON server)
+├── package-lock.json             # Dependency lock file
+├── package.json                  # Project dependencies and scripts
+├── README.md                     # This file
+├── SETUP_COMPLETE.md             # Setup instructions
+├── tsconfig.app.json             # TypeScript config for app
+├── tsconfig.json                 # TypeScript root config
+└── tsconfig.spec.json            # TypeScript config for tests
 
 ---
+
 
 ## ✅ Prerequisites
 
@@ -198,21 +176,6 @@ The application will be available at:
 http://localhost:4200
 ```
 
----
-
-### Option 2: Manual Commands
-
-**Backend:**
-
-```bash
-json-server --watch db.json --port 3000
-```
-
-**Frontend:**
-
-```bash
-ng serve --open
-```
 
 ---
 
@@ -296,14 +259,6 @@ src/app/components/filter-panel/filter-panel.component.ts
 * Global styles: `src/styles.css`
 * Component styles: individual `.css` files
 
----
-
-## 🌐 Browser Support
-
-* Chrome (latest)
-* Firefox (latest)
-* Safari (latest)
-* Microsoft Edge (latest)
 
 ---
 
