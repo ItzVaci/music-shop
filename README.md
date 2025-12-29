@@ -306,6 +306,15 @@ json-server --watch db.json --port 3001
 
 ---
 
+## Admin Account
+
+username: admin@musicshop.com
+password: admin123
+
+---
+
+---
+
 ## 🔮 Future Enhancements
 
 * 🔐 User authentication & authorization

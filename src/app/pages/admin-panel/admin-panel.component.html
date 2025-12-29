@@ -1,0 +1,13 @@
+<div class="admin-panel">
+  <h2>Admin Panel</h2>
+  <p>Welcome, Admin! Here you can manage all product listings.</p>
+  <div class="admin-listings">
+    <div *ngFor="let product of products" class="admin-listing">
+      <div>
+        <strong>{{ product.name }}</strong> <br />
+        <span>{{ product.category }} | ${{ product.price }}</span>
+      </div>
+      <button class="delete-btn" (click)="deleteProduct(product.id)">Delete</button>
+    </div>
+  </div>
+</div>

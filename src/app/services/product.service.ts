@@ -27,6 +27,11 @@ export class ProductService {
     return this.http.get<Product>(`${this.apiUrl}/products/${id}`);
   }
 
+  // Admin: Delete product by ID
+  deleteProduct(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/products/${id}`);
+  }
+
   setFilters(filters: any): void {
     this.filterState.next(filters);
   }

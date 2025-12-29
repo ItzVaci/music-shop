@@ -1,3 +1,13 @@
+/* Admin badge styling */
+.admin-badge {
+  background: #d32f2f;
+  color: #fff;
+  font-size: 0.8em;
+  margin-left: 0.5em;
+  padding: 0.2em 0.6em;
+  border-radius: 12px;
+  vertical-align: middle;
+}
 .header {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;

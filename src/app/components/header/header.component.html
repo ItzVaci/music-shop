@@ -13,14 +13,17 @@
       </div>
 
       <div class="user-menu" *ngIf="currentUser">
-        <a routerLink="/sell" class="nav-link btn-sell">💰 Sell</a>
-        <a routerLink="/my-listings" class="nav-link btn-listings">📋 My Listings</a>
+        <a routerLink="/sell" class="nav-link btn-sell" *ngIf="currentUser.role !== 'admin'">💰 Sell</a>
+        <a routerLink="/my-listings" class="nav-link btn-listings" *ngIf="currentUser.role !== 'admin'">📋 My Listings</a>
+        <a routerLink="/admin" class="nav-link btn-admin" *ngIf="currentUser.role === 'admin'">🛠️ Admin Panel</a>
         <button class="user-button" (click)="toggleUserMenu()">
           👤 {{ currentUser.name }}
+          <span *ngIf="currentUser.role === 'admin'" class="admin-badge">Admin</span>
         </button>
         <div class="dropdown" *ngIf="showUserMenu">
-          <a routerLink="/my-listings" class="dropdown-item">My Listings</a>
-          <a routerLink="/sell" class="dropdown-item">Sell Instrument</a>
+          <a routerLink="/my-listings" class="dropdown-item" *ngIf="currentUser.role !== 'admin'">My Listings</a>
+          <a routerLink="/sell" class="dropdown-item" *ngIf="currentUser.role !== 'admin'">Sell Instrument</a>
+          <a routerLink="/admin" class="dropdown-item" *ngIf="currentUser.role === 'admin'">Admin Panel</a>
           <hr />
           <button class="dropdown-item logout" (click)="logout()">Logout</button>
         </div>
