@@ -5,6 +5,7 @@ export interface User {
   id: string;
   email: string;
   name: string;
+  role?: 'admin' | 'user';
 }
 
 export interface AuthState {
@@ -16,105 +17,110 @@ export interface AuthState {
   providedIn: 'root'
 })
 export class AuthService {
+
+  // Returns the currently logged-in user
+  getCurrentUser(): User | null {
+    return this.loadUser();
+  }
+
+  // Login method for authenticating a user
+  login(email: string, password: string): boolean {
+    const usersJson = localStorage.getItem('users');
+    if (!usersJson) return false;
+    const users: any[] = JSON.parse(usersJson);
+    const user = users.find(u => u.email === email && u.password === password);
+    if (user) {
+      localStorage.setItem('currentUser', JSON.stringify(user));
+      this.authState.next({ user, isLoggedIn: true });
+      return true;
+    }
+    alert('Invalid email or password');
+    return false;
+  }
+
+  // Signup method for registering a new user
+  signup(email: string, password: string, name: string): void {
+    // Get users from localStorage or initialize
+    const usersJson = localStorage.getItem('users');
+    let users: any[] = usersJson ? JSON.parse(usersJson) : [];
+
+    // Check if email already exists
+    if (users.some(u => u.email === email)) {
+      alert('Email already registered');
+      return;
+    }
+
+    // Create new user object
+    const newUser: User & { password: string } = {
+      id: Date.now().toString(),
+      email,
+      name,
+      password,
+      role: 'user'
+    };
+    users.push(newUser);
+    localStorage.setItem('users', JSON.stringify(users));
+    // Set as current user (auto-login)
+    localStorage.setItem('currentUser', JSON.stringify(newUser));
+    this.authState.next({ user: newUser, isLoggedIn: true });
+  }
+
   private authState = new BehaviorSubject<AuthState>({
     user: this.loadUser(),
     isLoggedIn: !!this.loadUser()
   });
-
   public auth$ = this.authState.asObservable();
 
-  constructor() {
-    this.initializeDemoAccount();
-  }
-
-  private initializeDemoAccount(): void {
-    const users = this.getAllUsers();
-    const demoExists = users.some(u => u.email === 'demo@example.com');
-    
-    if (!demoExists) {
-      users.push({
-        id: 'demo-user',
-        email: 'demo@example.com',
-        name: 'Demo User',
-        password: 'password123'
-      });
-      localStorage.setItem('users', JSON.stringify(users));
-    }
-  }
-
+  // Loads the current user from localStorage
   private loadUser(): User | null {
-    const saved = localStorage.getItem('currentUser');
-    return saved ? JSON.parse(saved) : null;
+    const userJson = localStorage.getItem('currentUser');
+    return userJson ? JSON.parse(userJson) : null;
   }
 
-  private saveUser(user: User | null): void {
-    if (user) {
-      localStorage.setItem('currentUser', JSON.stringify(user));
-    } else {
-      localStorage.removeItem('currentUser');
-    }
-    this.authState.next({
-      user,
-      isLoggedIn: !!user
-    });
-  }
-
-  signup(email: string, password: string, name: string): void {
-    // Check if user already exists
-    const existingUsers = this.getAllUsers();
-    if (existingUsers.some(u => u.email === email)) {
-      alert('Email already registered. Please use a different email or login.');
-      return;
-    }
-
-    // Create new user
-    const newUser: User = {
-      id: Date.now().toString(),
-      email,
-      name
-    };
-
-    // Save user and password (in real app, use secure backend)
-    existingUsers.push({ ...newUser, password });
-    localStorage.setItem('users', JSON.stringify(existingUsers));
-
-    // Log in the new user
-    this.saveUser(newUser);
-    alert('Account created successfully!');
-  }
-
-  login(email: string, password: string): boolean {
-    const users = this.getAllUsers();
-    const user = users.find(u => u.email === email && (u as any).password === password);
-
-    if (user) {
-      const loggedInUser: User = {
-        id: user.id,
-        email: user.email,
-        name: user.name
-      };
-      this.saveUser(loggedInUser);
-      return true;
-    }
-
-    alert('Invalid email or password.');
-    return false;
-  }
-
+  // Logs out the current user
   logout(): void {
-    this.saveUser(null);
+    localStorage.removeItem('currentUser');
+    this.authState.next({ user: null, isLoggedIn: false });
   }
 
-  getCurrentUser(): User | null {
-    return this.authState.value.user;
+  // Returns all non-admin users (for admin panel)
+  getAllNonAdminUsers(): User[] {
+    const usersJson = localStorage.getItem('users');
+    if (!usersJson) return [];
+    const users: User[] = JSON.parse(usersJson);
+    return users.filter(u => u.role !== 'admin');
   }
 
-  isAuthenticated(): boolean {
-    return this.authState.value.isLoggedIn;
+  // Ban/unban logic
+  private getBannedUserIds(): string[] {
+    const banned = localStorage.getItem('bannedUsers');
+    return banned ? JSON.parse(banned) : [];
   }
 
-  private getAllUsers(): any[] {
-    const saved = localStorage.getItem('users');
-    return saved ? JSON.parse(saved) : [];
+  private saveBannedUserIds(ids: string[]): void {
+    localStorage.setItem('bannedUsers', JSON.stringify(ids));
+  }
+
+  banUser(userId: string): void {
+    const banned = this.getBannedUserIds();
+    if (!banned.includes(userId)) {
+      banned.push(userId);
+      this.saveBannedUserIds(banned);
+    }
+  }
+
+  unbanUser(userId: string): void {
+    const banned = this.getBannedUserIds();
+    const idx = banned.indexOf(userId);
+    if (idx > -1) {
+      banned.splice(idx, 1);
+      this.saveBannedUserIds(banned);
+    }
+  }
+
+  isUserBanned(userId: string): boolean {
+    return this.getBannedUserIds().includes(userId);
   }
 }
+
+

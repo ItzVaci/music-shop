@@ -1,6 +1,8 @@
 <div class="admin-panel">
   <h2>Admin Panel</h2>
-  <p>Welcome, Admin! Here you can manage all product listings.</p>
+  <p>Welcome, Admin! Here you can manage all product listings and users.</p>
+
+  <h3>Product Listings</h3>
   <div class="admin-listings">
     <div *ngFor="let product of products" class="admin-listing">
       <div>
@@ -8,6 +10,16 @@
         <span>{{ product.category }} | ${{ product.price }}</span>
       </div>
       <button class="delete-btn" (click)="deleteProduct(product.id)">Delete</button>
+    </div>
+  </div>
+
+  <h3>Users</h3>
+  <div class="admin-users">
+    <div *ngFor="let user of users" class="admin-user-row">
+      <span>{{ user.name }} ({{ user.email }})</span>
+      <span *ngIf="isUserBanned(user)" class="banned-badge">Banned</span>
+      <button *ngIf="!isUserBanned(user)" class="ban-btn" (click)="banUser(user)">Ban</button>
+      <button *ngIf="isUserBanned(user)" class="unban-btn" (click)="unbanUser(user)">Unban</button>
     </div>
   </div>
 </div>
